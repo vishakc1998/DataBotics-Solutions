@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Improved Anime Carousel</title>
+  <style>
+   
+
+   body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.browser {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh; /* Adjusted height */
+  background-color: #fff; /* Optional background color */
+  overflow: hidden; /* Ensure content does not overflow outside */
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: background 0.3s ease;
+}
+
+.carousel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 20px;
+  scrollbar-width: none;
+  width: 100%; /* Ensure the carousel fits within the browser */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel {
+  -webkit-overflow-scrolling: touch; 
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 100%; 
+  max-width: 250px; 
+  height: auto;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin: 10px;
+  scroll-snap-align: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.carousel-item:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.3);
+}
+
+/* Popup Styles */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.popup.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-content {
+  position: relative;
+  background: transparent;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+#close-popup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  color: #000000;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#close-popup:hover {
+  color: #ff4081;
+}
+
+.popup-content img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Description Styles */
+#popup-description {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #070707;
+  white-space: pre-wrap;
+  position: relative;
+  overflow: hidden;
+  border-right: .15em solid #ff4081;
+  animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #ff4081; }
+}
+
+/* Blur Effect When Popup is Open */
+.carousel-container.blurred {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .carousel-item {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    width: 70%;
+    height: auto;
+  }
+
+  .popup-content img {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-item {
+    width: 100%;
+  }
+
+  .popup-content img {
+    max-height: 200px;
+  }
+
+  .carousel {
+    flex-direction: column; /* Stack carousel items vertically on small screens */
+  }
+}
+
+  
+
+  </style>
+
+</head>
+<body>
+  
+  <div class="browser">
+    <div class="carousel-container">
+        <div class="carousel">
+          <div class="carousel-item" data-image="img/wms.jpg" data-description="A Warehouse Management System (WMS) is a software solution designed to optimize and streamline warehouse operations. It provides tools to efficiently manage inventory, track stock levels, control the movement of goods, and improve overall operational accuracy. With features such as real-time inventory tracking, barcode scanning, order fulfillment, and reporting, a WMS helps reduce errors, enhance productivity, and ensure timely delivery of products. Perfect for businesses of all sizes, a WMS enables better resource utilization and improves customer satisfaction by maintaining accurate and organized warehouse processes.">
+            <img src="img/wms.jpg" alt="Warehouse Management System">
+          </div>
+          <div class="carousel-item" data-image="img/asset.jpg" data-description="An Asset Management System (AMS) is a software solution designed to help organizations efficiently track, manage, and maintain their physical and digital assets. It provides real-time visibility into asset locations, conditions, usage, and lifecycles, ensuring optimal utilization and reducing downtime. With features like asset tracking, preventive maintenance scheduling, depreciation calculations, and reporting, an AMS simplifies asset management processes and enhances decision-making. This software is ideal for businesses seeking to reduce costs, extend asset lifespans, and ensure compliance with regulatory requirements.">
+            <img src="img/asset.jpg" alt="Asset Management System">
+          </div>
+          <div class="carousel-item" data-image="img/event.jpg" data-description="An Event Management System with WhatsApp Automation and Ticketing is a powerful software solution designed to simplify event planning and execution. It streamlines tasks such as event scheduling, attendee management, and ticket sales, while integrating WhatsApp for automated communication. With features like real-time ticketing, QR code scanning, automated reminders, and personalized attendee updates via WhatsApp, this system enhances efficiency and improves the attendee experience. Ideal for conferences, concerts, and corporate events, it ensures seamless coordination, boosts engagement, and maximizes ticket sales.">
+            <img src="img/event.jpg" alt="Event Management System">
+          </div>
+          <div class="carousel-item" data-image="img/meeting.jpg" data-description="A Meeting and Task Management System is a comprehensive tool designed to organize, streamline, and monitor meetings and tasks effectively. It helps teams schedule meetings, assign tasks, set deadlines, and track progress, ensuring enhanced productivity and collaboration. Key features include agenda creation, real-time task tracking, reminders, progress reporting, and seamless integration with calendars and communication tools. This system enables teams to stay organized, meet deadlines, and achieve goals efficiently, making it ideal for businesses looking to improve team coordination and project execution.">
+            <img src="img/meeting.jpg" alt="Meeting and Task Management System">
+          </div>
+          <div class="carousel-item " data-image="img/tracking.jpg" data-description="A Goods Tracking System with Barcodes and QR Codes is a modern solution designed to streamline inventory and logistics management. This system leverages barcode and QR code technology to efficiently track the movement of goods from origin to destination. Key features include real-time scanning, automated data entry, location tracking, and status updates. It enhances accuracy, reduces manual errors, and improves operational efficiency by providing instant access to product information. Ideal for warehouses, retailers, and logistics companies, this system ensures seamless inventory control and transparent supply chain operations.">
+            <img src="img/tracking.jpg" alt="Goods Tracking System with Barcodes and QR Codes">
+          </div>
+        </div>
+      </div>
+    
+      <div id="popup" class="popup hidden">
+        <div class="popup-content">
+          <span id="close-popup">&times;</span>
+          <img id="popup-image" src="" alt="Popup Image">
+          <p id="popup-description"></p>
+        </div>
+      </div>
+
+      </div>
+
+  <script src="script.js"></script>
+</body>
+<script>
+  
+
+  
+
+
+// Select Elements
+const carousel = document.querySelector('.carousel'); // Correctly define the carousel element
+const carouselItems = document.querySelectorAll('.carousel-item');
+const carouselContainer = document.querySelector('.carousel-container');
+const popup = document.getElementById('popup');
+const popupImage = document.getElementById('popup-image');
+const popupDescription = document.getElementById('popup-description');
+const closePopup = document.getElementById('close-popup');
+
+// Function to Show Popup with Typing Animation
+const openPopup = (imageSrc, description) => {
+  popupImage.src = imageSrc;
+  popupDescription.textContent = ''; // Clear previous text
+
+  // Typing Effect Implementation
+  let index = 0;
+  const speed = 30; // Typing speed in ms
+
+  const typeWriter = () => {
+    if (index < description.length) {
+      popupDescription.textContent += description.charAt(index);
+      index++;
+      setTimeout(typeWriter, speed);
+    }
+  };
+
+  typeWriter();
+
+  // Set Background Image
+  carouselContainer.style.backgroundImage = `url(${imageSrc})`;
+
+  // Show Popup
+  popup.classList.add('visible');
+
+  // Add Blur to Carousel
+  carouselContainer.classList.add('blurred');
+};
+
+// Function to Close Popup
+const closePopupFunc = () => {
+  popup.classList.remove('visible');
+  carouselContainer.classList.remove('blurred');
+};
+
+// Add Event Listeners to Carousel Items
+carouselItems.forEach(item => {
+  item.addEventListener('pointerenter', () => {
+    const bgImage = item.dataset.image;
+    carouselContainer.style.backgroundImage = `url(${bgImage})`;
+  });
+
+  item.addEventListener('click', () => {
+    const imageSrc = item.querySelector('img').src;
+    const description = item.dataset.description;
+    openPopup(imageSrc, description);
+  });
+});
+
+// Add Touch Scrolling Support
+carousel.addEventListener('touchstart', () => {
+  carousel.style.overflowX = 'auto'; // Ensure horizontal scrolling is enabled
+});
+
+// Close Popup on Close Button Click
+closePopup.addEventListener('click', closePopupFunc);
+
+// Close Popup When Clicking Outside Content
+popup.addEventListener('click', (event) => {
+  if (event.target === popup) {
+    closePopupFunc();
+  }
+});
+
+
+
+</script>
+</html>

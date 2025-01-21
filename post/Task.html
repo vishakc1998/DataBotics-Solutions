@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link href="../logos/icon.png" rel="shortcut icon"
+    type="image/x-icon">
+<link href="../logos/icon.png" rel="apple-touch-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #2b3e50;
+            font-family: 'Manrope', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #29b6f6;
+            margin: 0;
+        }
+
+        .typing {
+            font-size: 1.2rem;
+            color: #81d4fa;
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            padding: 2rem 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            z-index: 10;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #29b6f6;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #cfd8dc;
+        }
+
+        .features, .benefits {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .features div, .benefits div {
+            flex: 1 1 calc(33.33% - 2rem);
+            background: #3e5060;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #40c4ff;
+        }
+
+        .images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .images img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .images img:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #37474f;
+            color: #ffffff;
+            z-index: 10;
+            position: relative;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        svg {
+            width: 150%;
+            height: 150%;
+            position: absolute;
+            top: -25%;
+            left: -25%;
+            animation: rotate-bg 20s linear infinite;
+        }
+
+        @keyframes rotate-bg {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .move {
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(10px) scale(1.05);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+            }
+        }
+		
+		 @media (max-width: 768px) {
+            .features div, .benefits div {
+                flex: 1 1 100%;
+            }
+           
+
+            .images img {
+                width: 100%;
+                overflow-y: auto; /* Enables vertical scrolling */
+                overflow-x: hidden;
+                
+            }
+
+           
+        }
+		
+    </style>
+
+</head>
+
+<body>
+
+    <div class="animated-bg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <circle class="move" cx="50" cy="50" r="40" fill="url(#gradient1)" />
+            <circle class="move" cx="150" cy="150" r="40" fill="url(#gradient2)" />
+            <circle class="move" cx="100" cy="100" r="30" fill="url(#gradient3)" />
+            <circle class="move" cx="80" cy="160" r="20" fill="url(#gradient4)" />
+            <defs>
+                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00587a" />
+                    <stop offset="100%" stop-color="#007ba3" />
+                </linearGradient>
+                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#008db6" />
+                    <stop offset="100%" stop-color="#00a5d6" />
+                </linearGradient>
+                <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00c7ff" />
+                    <stop offset="100%" stop-color="#00e3ff" />
+                </linearGradient>
+                <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#003f5f" />
+                    <stop offset="100%" stop-color="#004e6b" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <header>
+        <h1>TaskMate</h1>
+        <p class="typing">Streamline Tasks and Meetings Efficiently</p>
+    </header>
+
+    <div class="container">
+        <h2>About TaskMate</h2>
+        <p><strong>TaskMate</strong> is an intuitive solution for managing tasks and meetings within an organization. From creating meetings to assigning tasks and setting agendas, TaskMate helps streamline workflows, boost productivity, and improve team collaboration. It's the ultimate tool for staying organized and on track.</p>
+    </div>
+
+    <div class="container">
+        <h2>Features</h2>
+        <div class="features">
+            <div>
+                <h3>Meeting Scheduler</h3>
+                <p>Easily schedule meetings and invite team members with integrated calendar functionality.</p>
+            </div>
+            <div>
+                <h3>Task Assignment</h3>
+                <p>Assign tasks to team members, set deadlines, and monitor progress in real-time.</p>
+            </div>
+            <div>
+                <h3>Agenda Management</h3>
+                <p>Plan and share detailed agendas to ensure meetings stay focused and productive.</p>
+            </div>
+            <div>
+                <h3>Notification System</h3>
+                <p>Stay updated with instant notifications for task updates and meeting reminders.</p>
+            </div>
+            <div>
+                <h3>Analytics and Reports</h3>
+                <p>Generate detailed insights on task completion rates, meeting efficiency, and more.</p>
+            </div>
+            <div>
+                <h3>Collaboration Tools</h3>
+                <p>Enable team members to share files, leave comments, and collaborate seamlessly.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Benefits</h2>
+        <div class="benefits">
+            <div>
+                <h3>Improved Organization</h3>
+                <p>Keep track of all tasks and meetings in one place, reducing chaos and confusion.</p>
+            </div>
+            <div>
+                <h3>Enhanced Productivity</h3>
+                <p>Boost team efficiency by streamlining task management and eliminating manual processes.</p>
+            </div>
+            <div>
+                <h3>Better Communication</h3>
+                <p>Facilitate clear communication with shared agendas, updates, and collaboration tools.</p>
+            </div>
+            <div>
+                <h3>Time Savings</h3>
+                <p>Automate routine tasks and reduce time spent on manual follow-ups and scheduling.</p>
+            </div>
+            <div>
+                <h3>Scalable Solution</h3>
+                <p>Perfect for teams of all sizes, from small startups to large enterprises.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Visualize TaskMate in Action</h2>
+        <div class="images">
+            <img src="../img/meeting.png" alt="Task Management">
+            <img src="../img/meeting2.png" alt="Meeting Scheduler">
+            <img src="../img/meeting5.png" alt="Analytics">
+        </div>
+    </div>
+
+    <footer>
+        <p>© TaskMate Solutions 2024. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

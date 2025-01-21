@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #002b3e;
+            font-family: 'Manrope', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #00d9ff;
+            margin: 0;
+        }
+
+        .typing {
+            font-size: 1.2rem;
+            color: #8fd8f4;
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            padding: 2rem 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            z-index: 10;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00d9ff;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #d0f0ff;
+        }
+
+        .features, .benefits {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .features div, .benefits div {
+            flex: 1 1 calc(33.33% - 2rem);
+            background: #003f5f;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #00c0ff;
+        }
+
+        /* .images {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .images img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        } */
+
+        .images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .images img {
+            width: 30%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .images img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+
+        .images img:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #00304a;
+            color: #ffffff;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Animated SVG Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        svg {
+            width: 150%;
+            height: 150%;
+            position: absolute;
+            top: -25%;
+            left: -25%;
+            animation: rotate-bg 20s linear infinite;
+        }
+
+        @keyframes rotate-bg {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .move {
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(10px) scale(1.05);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+            }
+        }
+		
+		 @media (max-width: 768px) {
+            .features div, .benefits div {
+                flex: 1 1 100%;
+            }
+           
+
+            .images img {
+                width: 100%;
+                overflow-y: auto; /* Enables vertical scrolling */
+                overflow-x: hidden;
+                
+            }
+
+           
+        }
+    </style>
+
+<link href="../logos/icon.png" rel="shortcut icon"
+type="image/x-icon">
+<link href="../logos/icon.png" rel="apple-touch-icon">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <circle class="move" cx="50" cy="50" r="40" fill="url(#gradient1)" />
+            <circle class="move" cx="150" cy="150" r="40" fill="url(#gradient2)" />
+            <circle class="move" cx="100" cy="100" r="30" fill="url(#gradient3)" />
+            <circle class="move" cx="80" cy="160" r="20" fill="url(#gradient4)" />
+            <defs>
+                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#004869" />
+                    <stop offset="100%" stop-color="#00567b" />
+                </linearGradient>
+                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0077a3" />
+                    <stop offset="100%" stop-color="#0087c6" />
+                </linearGradient>
+                <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00aaff" />
+                    <stop offset="100%" stop-color="#00d9ff" />
+                </linearGradient>
+                <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#002f4f" />
+                    <stop offset="100%" stop-color="#003f6b" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Content -->
+    <header>
+        <h1>Warehouse Management System</h1>
+        <p class="typing">Transforming the way warehouses operate efficiently and seamlessly.</p>
+    </header>
+
+    <div class="container">
+        <h2>About Warehouse Management Software</h2>
+        <p>Warehouse Management Software (WMS) is an integrated solution to streamline and optimize storage and distribution. WMS covers all key processes, including production, packing, transfer, stock-in and stock-out, material issue, dispatch, and sales return, ensuring seamless operation and tracking. It aids businesses in improving accuracy, reducing errors, and scaling efficiently while providing real-time visibility into operations.</p>
+    </div>
+
+    <div class="container">
+        <h2>Features</h2>
+        <div class="features">
+            <div>
+                <h3>Real-Time Inventory</h3>
+                <p>Monitor stock levels and receive live updates to avoid shortages or overstocking.</p>
+            </div>
+            <div>
+                <h3>Order Management</h3>
+                <p>Streamline processing, shipment tracking, and efficient handling of orders.</p>
+            </div>
+            <div>
+                <h3>Barcode Integration</h3>
+                <p>Enhance data accuracy by scanning items seamlessly with integrated barcode systems.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Benefits</h2>
+        <div class="benefits">
+            <div>
+                <h3>Reduced Errors</h3>
+                <p>Automate processes to minimize manual mistakes and ensure data integrity.</p>
+            </div>
+            <div>
+                <h3>Improved Efficiency</h3>
+                <p>Save time and resources with intelligent tools designed for productivity.</p>
+            </div>
+            <div>
+                <h3>Scalable Solutions</h3>
+                <p>Adaptable software to support businesses of any size as they grow.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" >
+        <h2>Warehouse Visualization</h2>
+        <div class="images">
+            <img src="../img/wms1.jpg" alt="Warehouse">
+            <img src="../img/wms2.jpg" alt="Inventory">
+            <img src="../img/wms3.jpg" alt="Shipping">
+        </div>
+    </div>
+
+    <footer>
+        <p>© DataboticsSolutions 2024. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
